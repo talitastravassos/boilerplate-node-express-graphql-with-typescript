@@ -1,23 +1,21 @@
-import '@controllers/DummyController';
-import * as dotenv from 'dotenv';
-import express from 'express';
+import { ApolloServer } from 'apollo-server';
+import path from 'path';
+import 'reflect-metadata';
+import { buildSchema } from 'type-graphql';
+import { DummyResolver } from './resolvers/dummy-resolver';
 
-const app = express();
+async function bootstrap() {
+  const schema = await buildSchema({
+    resolvers: [DummyResolver],
+    emitSchemaFile: path.resolve(__dirname, 'schema.gql'),
+  });
+  const server = new ApolloServer({
+    schema,
+  });
 
-dotenv.config();
+  const { url } = await server.listen();
 
-const port = 3333;
+  console.log(`🚀  Server ready at ${url}`);
+}
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'OPTIONS, GET, POST, PUT, PATCH, DELETE'
-  );
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
-
-app.listen(port, () => {
-  console.log(`⚡ Server running on port ${port} ⚡`);
-});
+void bootstrap();
