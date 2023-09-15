@@ -1,6 +1,6 @@
-# boilerplate-node-express-app-with-typescript
+# boilerplate-node-express-graphql-with-typescript
 
-A boilerplate for Node and Express apps with Typescript
+A boilerplate for node-express projects with GraphQL and Typescript
 
 ## Installed packages
 
