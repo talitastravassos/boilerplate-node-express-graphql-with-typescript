@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-graphql-formula1-api",
+  "name": "boilerplate-node-express-graphql-with-typescript",
   "version": "1.0.0",
-  "description": "A GraphQL Formula 1 API",
+  "description": "a boilerplate for node-express projects with GraphQL and Typescript",
   "main": "server.ts",
   "author": "talitastravassos <talitatravassos.tt@gmail.com>",
   "license": "MIT",
